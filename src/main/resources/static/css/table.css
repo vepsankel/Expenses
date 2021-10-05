@@ -1,0 +1,12 @@
+.table-line, .table-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+}
+
+.table-line > span, .table-header > span {
+    width: 150px;
+}

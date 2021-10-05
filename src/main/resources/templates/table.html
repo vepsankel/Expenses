@@ -1,0 +1,31 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/table.css}">
+    <title>Your expenses</title>
+</head>
+<body>
+<a th:href="@{/new}">Add New</a>
+<div th:object="${table}">
+
+    <div class="table-header">
+        <span>Date</span>
+        <span>Description</span>
+        <span>Price</span>
+        <span>Valute</span>
+        <span>Importance</span>
+        <span>Type</span>
+        <span>Edit</span>
+    </div>
+
+    <div th:each="entry : *{entries.values()}" class="table-line">
+        <span th:text="${entry.date}"> </span>
+        <span th:text="${entry.descriprion}"> </span>
+        <span th:text="${entry.price}"> </span>
+        <span th:text="${entry.valute}"> </span>
+        <span th:text="${entry.importance.getDisplayValue()}"> </span>
+        <span th:text="${entry.type.getDisplayValue()}"> </span>
+        <span><a th:href="@{/edit(id=${entry.getID()})}">Edit</a></span>
+    </div>
+</div>
+</body>
+</html>

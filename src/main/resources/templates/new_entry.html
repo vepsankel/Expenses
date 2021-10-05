@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>New entry</title>
+</head>
+<body>
+
+<form action="#" th:action="@{'/validate/'}"  th:object="${new_entry}">
+
+    Short description:  <label>
+                            <input type="text" th:field="*{descriprion}">
+                        </label>
+    <br>
+    Price:  <label>
+                <input type="number" th:field="*{price}">
+            </label>
+    <label>
+        <select th:field="*{valute}">
+            <option
+                    th:each="valute : ${T(com.springprojects.expenses.Valute).values()}"
+                    th:value="${valute}"
+                    th:text="${valute}">
+            </option>
+        </select>
+    </label>
+    <br>
+    Inportance:
+    <label>
+        <select th:field="*{importance}">
+            <option
+                    th:each="imp : ${T(com.springprojects.expenses.Importance).values()}"
+                    th:value="${imp}"
+                    th:text="${imp.getDisplayValue()}">
+            </option>
+        </select>
+    </label>
+    <br>
+    Type:
+    <label>
+        <select th:field="*{type}">
+            <option
+                    th:each="type : ${T(com.springprojects.expenses.Types).values()}"
+                    th:value="${type}"
+                    th:text="${type.getDisplayValue()}">
+            </option>
+        </select>
+    </label>
+    <br>
+    <br>
+    <br>
+    <input type="hidden" name="id" th:value="${id}"/>
+    <input type="submit" />
+
+</form>
+
+</body>
+</html>
